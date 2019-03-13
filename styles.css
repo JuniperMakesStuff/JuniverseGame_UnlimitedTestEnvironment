@@ -1,0 +1,27 @@
+canvas {
+  background-image: url(https://github.com/JuniperMakesStuff/JUNIVERSEGAME/blob/master/ERROR.png?raw=true);
+  position: fixed;
+  top: 0px;
+  margin: auto;
+  filter: brightness(var(--brightness));
+  image-rendering: optimizeSpeed;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: optimize-contrast;
+    image-rendering: pixelated;
+    height: 100%;
+}
+
+img {
+  width: 0px;
+  height: 0px;
+  image-rendering: optimizeSpeed;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: optimize-contrast;
+    image-rendering: pixelated;
+}
+
+:root {
+  --brightness: 100%;
+}
