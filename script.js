@@ -14,8 +14,8 @@ var playsound=function(soundname){
   sound.play()
 }
 var musics={
-  testmusic:new Audio("https://github.com/JuniperMakesStuff/JUNIVERSEGAME/blob/master/Nightcore%20-%20Rasputin%20(Remix)%20%E2%9C%95.mp3?raw=true","mp3"),
-  PLAYING:new Audio("https://github.com/JuniperMakesStuff/JUNIVERSEGAME/blob/master/Nightcore%20-%20Rasputin%20(Remix)%20%E2%9C%95.mp3?raw=true","mp3")
+  testmusic:new Audio("music/rasputin.mp3","mp3"),
+  PLAYING:new Audio("music/rasputin.mp3","mp3")
 }
 var playjssound=function(sound){
   sound.load()
@@ -306,18 +306,30 @@ window.onload= function(){
   var cutscenemovecolon = function(x,y,s){
     for(i=0;i<s;i++){if (!(csx1==x&&csy1==y)){
       csr1 = 1
-      if (x>csx1){
-        csd1 = 1
+      
+      
+	  if (x>csx1){
+        csd1 = 0
         csx1+=1
         
       }else if (x<csx1){
-        csd1 = -1
+        csd1 = 2
         csx1-=1
       }
-      if (y>csy1){
+	  if (y>csy1){
         csy1+=1
+		if(Math.abs(y-csy1)>Math.abs(x-csx1)){
+		csd1=1
+		}
       }else if(y<csy1){
-        csy1-=1
+        if (csd1==1){
+			if (Math.random()<0.5){
+			csd1=0
+			}else{
+			csd1=2
+			}
+		}
+		csy1-=1
       }
     }else{
       csr1 = 0
@@ -326,18 +338,30 @@ window.onload= function(){
   var cutscenemovejuni = function(x,y,s){
     for(i=0;i<s;i++){if (!(csx2==x&&csy2==y)){
       csr2 = 1
-      if (x>csx2){
-        csd2 = 1
+      
+      
+	  if (x>csx2){
+        csd2 = 0
         csx2+=1
         
       }else if (x<csx2){
-        csd2 = -1
+        csd2 = 2
         csx2-=1
       }
-      if (y>csy2){
+	  if (y>csy2){
         csy2+=1
+		if(Math.abs(y-csy2)>Math.abs(x-csx2)){
+		csd2=1
+		}
       }else if(y<csy2){
-        csy2-=1
+        if (csd2==1){
+			if (Math.random()<0.5){
+			csd2=0
+			}else{
+			csd2=2
+			}
+		}
+		csy2-=1
       }
     }else{
       csr2 = 0
@@ -477,34 +501,50 @@ window.onload= function(){
     //makecharacter(0,0,0,1,1,0,0)
     if (csv1==1){
       if (csr1==0){
-        if (csd1==1){
-          makeimage("colonidle",csx1,csy1,128,128,Math.floor(t/10%4),1,1)
-        }else{
-          makeimage("colonidleleft",csx1,csy1,128,128,Math.floor(t/10%4),1,1)
+        if (csd1==0){
+          makeimage("temprighti",csx1,csy1,128,128,Math.floor(t/20%2),0.5,0.5)
+        }else if(csd1==2){
+          makeimage("templefti",csx1,csy1,128,128,Math.floor(t/20%2),0.5,0.5)
+        }else if(csd1==-1){
+          makeimage("tempupi",csx1,csy1,128,128,Math.floor(t/20%2),0.5,0.5)
+        }else if(csd1==1){
+          makeimage("tempdowni",csx1,csy1,128,128,Math.floor(t/20%2),0.5,0.5)
         }
         
       }else{
-        if (csd1==1){
-          makeimage("colonrun",csx1,csy1,128,128,Math.floor(t/8%8),1,1)
-        }else{
-          makeimage("colonrunleft",csx1,csy1,128,128,Math.floor(t/8%8),1,1)
+        if (csd1==0){
+          makeimage("tempright",csx1,csy1,128,128,Math.floor(t/5%8),0.5,0.5)
+        }else if(csd1==2){
+          makeimage("templeft",csx1,csy1,128,128,Math.floor(t/5%8),0.5,0.5)
+        }else if(csd1==-1){
+          makeimage("tempup",csx1,csy1,128,128,Math.floor(t/5%8),0.5,0.5)
+        }else if(csd1==1){
+          makeimage("tempdown",csx1,csy1,128,128,Math.floor(t/5%8),0.5,0.5)
         }
       }
     }
     
     if (csv2==1){
       if (csr2==0){
-        if (csd2==1){
-          makeimage("juniidle",csx2,csy2,128,128,Math.floor(t/10%4),1,1)
-        }else{
-          makeimage("juniidleleft",csx2,csy2,128,128,Math.floor(t/10%4),1,1)
+        if (csd2==0){
+          makeimage("temprighti",csx2,csy2,128,128,Math.floor(t/20%2),0.5,0.5)
+        }else if(csd2==2){
+          makeimage("templefti",csx2,csy2,128,128,Math.floor(t/20%2),0.5,0.5)
+        }else if(csd2==-1){
+          makeimage("tempupi",csx2,csy2,128,128,Math.floor(t/20%2),0.5,0.5)
+        }else if(csd2==1){
+          makeimage("tempdowni",csx2,csy2,128,128,Math.floor(t/20%2),0.5,0.5)
         }
         
       }else{
-        if (csd2==1){
-          makeimage("junirun",csx2,csy2,128,128,Math.floor(t/8%8),1,1)
-        }else{
-          makeimage("junirunleft",csx2,csy2,128,128,Math.floor(t/8%8),1,1)
+        if (csd2==0){
+          makeimage("tempright",csx2,csy2,128,128,Math.floor(t/5%8),0.5,0.5)
+        }else if(csd2==2){
+          makeimage("templeft",csx2,csy2,128,128,Math.floor(t/5%8),0.5,0.5)
+        }else if(csd2==-1){
+          makeimage("tempup",csx2,csy2,128,128,Math.floor(t/5%8),0.5,0.5)
+        }else if(csd2==1){
+          makeimage("tempdown",csx2,csy2,128,128,Math.floor(t/5%8),0.5,0.5)
         }
       }
     }
@@ -629,7 +669,7 @@ window.onload= function(){
     }else if (t<5750){
       say("heheheh what she doesn't know is it's actually maui's hook",0,1,0)
     }else if (t<5950){
-      cutscenemovecolon(40,-185,2)
+      cutscenemovecolon(40,-165,2)
     }else if (t<6000){
       roomstate = 4
     }else if (t<6300){
@@ -738,17 +778,21 @@ window.onload= function(){
     for (i3=0;i3<charactersowned.length;i3++){
       if (characterline.movedelay<=0){
         if (charactersowned[i3].direction ==1){
-          makeimage(charactersowned[i3].spriteDirectory+"idle",charactersowned[i3].x-camera.x,charactersowned[i3].y-camera.y-27,128,128,Math.floor(t%4),0.5,0.5)
+          makeimage("temprighti",charactersowned[i3].x-camera.x,charactersowned[i3].y-camera.y-16,128,128,Math.floor(t/2%2),0.25,0.25)
+        }else if(charactersowned[i3].direction ==0){
+          makeimage("tempdowni",charactersowned[i3].x-camera.x,charactersowned[i3].y-camera.y-16,128,128,Math.floor(t/2%2),0.25,0.25)
         }else{
-          makeimage(charactersowned[i3].spriteDirectory+"idleleft",charactersowned[i3].x-camera.x,charactersowned[i3].y-camera.y-27,128,128,Math.floor(t%4),0.5,0.5)
-        }
+	      makeimage("templefti",charactersowned[i3].x-camera.x,charactersowned[i3].y-camera.y-16,128,128,Math.floor(t/2%2),0.25,0.25)
+		}
         
       }else{
         if (charactersowned[i3].direction ==1){
-        makeimage(charactersowned[i3].spriteDirectory+"run",charactersowned[i3].x-camera.x,charactersowned[i3].y-camera.y-27,128,128,Math.floor((t*2)%8),0.5,0.5)
+          makeimage("tempright",charactersowned[i3].x-camera.x,charactersowned[i3].y-camera.y-16,128,128,Math.floor(t*2%8),0.25,0.25)
+        }else if(charactersowned[i3].direction ==0){
+          makeimage("tempdown",charactersowned[i3].x-camera.x,charactersowned[i3].y-camera.y-16,128,128,Math.floor(t*2%8),0.25,0.25)
         }else{
-          makeimage(charactersowned[i3].spriteDirectory+"runleft",charactersowned[i3].x-camera.x,charactersowned[i3].y-camera.y-27,128,128,Math.floor((t*2)%8),0.5,0.5)
-        }
+	      makeimage("templeft",charactersowned[i3].x-camera.x,charactersowned[i3].y-camera.y-16,128,128,Math.floor(t*2%8),0.25,0.25)
+		}
       }
       
       
@@ -1157,8 +1201,8 @@ window.onload= function(){
   
   //rendertitle()
   //intro()
-  //world()
-  battle()
+  world()
+  //battle()
   //test()
   
   
@@ -1224,6 +1268,7 @@ window.onload= function(){
       }
     }
     var audio = musics.PLAYING
+	audio.volume = 0
     if (audio.paused == true){
     audio.load();
     audio.play();///
