@@ -1,0 +1,1 @@
+start "Chrome" chrome --app=C:\Users\thegr\Desktop\JUNIVERSEGAME-master\JUNIVERSEGAME-master\index.html
